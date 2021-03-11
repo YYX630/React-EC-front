@@ -1,0 +1,50 @@
+import axios from "axios";
+import { removeImage } from "./cloudinary";
+
+export const getProductsByCount = async (count) => {
+  return await axios.get(`${process.env.REACT_APP_API_URL}/products/${count}`);
+};
+
+export const removeProduct = async (slug, images, authtoken) => {
+  //含まれてる写真も削除する。awaitは必要ない
+  if (images && images.length) {
+    images.map((image) => {
+      removeImage(image.public_id, authtoken)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    });
+  }
+  //製品そのものの削除
+  return await axios.delete(
+    `${process.env.REACT_APP_API_URL}/product/${slug}`,
+    {
+      headers: {
+        authtoken: authtoken,
+      },
+    }
+  ); //axiosのdeleteメソッドはbodyを付けない
+};
+
+export const getProduct = async (slug) => {
+  return await axios.get(`${process.env.REACT_APP_API_URL}/product/${slug}`); //第二引数は送信内容のbody。第3引数はheader。
+};
+
+export const updateProduct = async (slug, product, authtoken) => {
+  return await axios.put(
+    `${process.env.REACT_APP_API_URL}/product/${slug}`,
+    product, //productにはjsonオブジェクトが代入されるので、直でoK. product = {name: name}すね。
+    {
+      headers: {
+        authtoken: authtoken,
+      },
+    }
+  ); //第二引数は送信内容のbody。第3引数はheader。
+};
+
+export const createProduct = async (product, authtoken) => {
+  return await axios.post(`${process.env.REACT_APP_API_URL}/product`, product, {
+    headers: {
+      authtoken: authtoken,
+    },
+  }); //第二引数は送信内容のbody。第3引数はheader。
+};
