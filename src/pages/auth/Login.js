@@ -19,7 +19,12 @@ const Login = ({ history }) => {
   let dispatch = useDispatch();
 
   useEffect(() => {
-    if (user && user.token) {
+    //ログイン済みの人が来たら、強制送還したい。
+    //ただし、intendedなら、そうしない。
+    let intended = history.location.state;
+    if (intended) {
+      return;
+    } else if (user && user.token) {
       history.push("/");
     }
   }, [user, history]);

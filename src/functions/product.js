@@ -63,3 +63,11 @@ export const createProduct = async (product, authtoken) => {
 export const getProductsCount = async () => {
   return await axios.get(`${process.env.REACT_APP_API_URL}/countproducts`);
 };
+
+export const productStar = async (star, productId, authtoken) => {
+  return await axios.put(
+    `${process.env.REACT_APP_API_URL}/product/star/${productId}`,
+    { star: star },
+    { headers: { authtoken: authtoken } }
+  );
+};

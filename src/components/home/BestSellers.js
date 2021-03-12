@@ -20,7 +20,11 @@ const BestSellers = () => {
   }, [page]);
 
   useEffect(() => {
+    let isMounted = true; // note this flag denote mount status
     getProductsCount().then((res) => setProductsCount(res.data));
+    return () => {
+      isMounted = false;
+    }; // use effect cleanup to set flag false, if unmounted
   }, []);
 
   // loaders

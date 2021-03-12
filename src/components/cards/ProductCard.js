@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import defaultImage from "../../images/man2.jpg";
 import { Card } from "antd";
 import { EyeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { showAverage } from "../../functions/rating";
 
 const { Meta } = Card;
 
@@ -12,6 +13,11 @@ const ProductCard = ({ product }) => {
 
   return (
     <div>
+      {product && product.ratings && product.ratings.length > 0 ? (
+        showAverage(product)
+      ) : (
+        <div className="text-center pt-1 pb-3">評価はまだありません</div>
+      )}
       <Card
         cover={
           <img
@@ -22,14 +28,12 @@ const ProductCard = ({ product }) => {
         }
         actions={[
           <Link to={`/product/${slug}`}>
-            <EyeOutlined />
+            <EyeOutlined className="text-info" />
             <br />
             View Product
           </Link>,
           <>
-            <ShoppingCartOutlined
-            // className="text-danger"
-            />
+            <ShoppingCartOutlined className="text-success" />
             <br />
             Add to Cart
           </>,

@@ -4,7 +4,11 @@ import { createOrUpdateUser } from "../functions/auth";
 
 // ログイン時redirect先指定関数
 const roleBasedRedirect = (res, history) => {
-  if (res.data.role === "admin") {
+  // どこかに行こうとしていたのなら、それはhistory.location.state.fromにある
+  let intended = history.location.state;
+  if (intended) {
+    history.push(intended.from);
+  } else if (res.data.role === "admin") {
     history.push("/admin/dashboard");
   } else {
     history.push("/user/history");

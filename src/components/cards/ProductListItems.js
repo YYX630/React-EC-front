@@ -2,7 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProductListItems = ({ product }) => {
-  const { description, slug, category, subs, price, color } = product;
+  const {
+    description,
+    slug,
+    category,
+    subs,
+    price,
+    shipping,
+    color,
+    brand,
+    quantity,
+    sold,
+  } = product;
   return (
     <ul className="list-group">
       <li className="list-group-item">
@@ -22,46 +33,49 @@ const ProductListItems = ({ product }) => {
           </Link>
         </li>
       )}
+      {subs && subs[0] && (
+        <li className="list-group-item">
+          サブカテゴリ―
+          {subs.map((sub) => (
+            <Link
+              className="label label-default labe-pill pull-xs-right"
+              to={`/sub/${slug}`}
+              key={sub._id}
+            >
+              {sub.name}
+            </Link>
+          ))}
+        </li>
+      )}
+
       <li className="list-group-item">
-        price
+        配達
         <span className="label label-default labe-pill pull-xs-right">
-          ￥ {price}
+          {shipping}
         </span>
       </li>
       <li className="list-group-item">
-        price
+        色
         <span className="label label-default labe-pill pull-xs-right">
-          ￥ {price}
+          {color}
         </span>
       </li>
       <li className="list-group-item">
-        price
+        ブランド
         <span className="label label-default labe-pill pull-xs-right">
-          ￥ {price}
+          {brand}
         </span>
       </li>
       <li className="list-group-item">
-        price
+        残り
         <span className="label label-default labe-pill pull-xs-right">
-          ￥ {price}
+          {quantity} 個
         </span>
       </li>
       <li className="list-group-item">
-        price
+        販売済み
         <span className="label label-default labe-pill pull-xs-right">
-          ￥ {price}
-        </span>
-      </li>
-      <li className="list-group-item">
-        price
-        <span className="label label-default labe-pill pull-xs-right">
-          ￥ {price}
-        </span>
-      </li>
-      <li className="list-group-item">
-        price
-        <span className="label label-default labe-pill pull-xs-right">
-          ￥ {price}
+          {sold} 個
         </span>
       </li>
     </ul>
