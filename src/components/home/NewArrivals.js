@@ -31,7 +31,7 @@ const NewArrivals = () => {
   const loadAllProducts = () => {
     setLoading(true);
     //sort, order, limit, currentPage=1
-    getProducts("createAt", "desc", perPage, page).then((res) => {
+    getProducts("createdAt", "desc", perPage, page).then((res) => {
       setProducts(res.data);
       setLoading(false);
     });

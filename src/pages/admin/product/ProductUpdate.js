@@ -22,8 +22,8 @@ const initialState = {
   shipping: "",
   quantity: "",
   images: [],
-  colors: ["大仏", "仏", "鬼", "大鬼"], //これはただの選択肢
-  brands: ["B1", "B2", "B3", "B4", "M1", "M2"], //これもただの選択肢
+  colors: ["黒", "白", "灰色", "青", "赤", "オレンジ", "緑", "黄色"], //これはただの選択肢
+  brands: ["東大", "京大", "シャネル", "Microsoft", "Apple"], //これもただの選択肢
   color: "",
   brand: "",
   category: "",
