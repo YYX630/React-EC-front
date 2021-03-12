@@ -17,51 +17,53 @@ import { currentUser } from "./functions/auth";
 import { LoadingOutlined } from "@ant-design/icons";
 
 // //components
-// import Header from "./components/nav/Header";
+import Header from "./components/nav/Header";
 
 // // pages
-// import Login from "./pages/auth/Login";
-// import Register from "./pages/auth/Register";
-// import Home from "./pages/Home";
-// import RegisterComplete from "./pages/auth/RegisterComplete";
-// import ForgotPassword from "./pages/auth/ForgotPassword";
-// import History from "./pages/user/History";
-// import Password from "./pages/user/Password";
-// import Wishlist from "./pages/user/Wishlist";
-// import AdminDashboard from "./pages/admin/AdminDashboard";
-// import CategoryCreate from "./pages/admin/category/CategoryCreate";
-// import CategoryUpdate from "./pages/admin/category/CategoryUpdate";
-// import SubCreate from "./pages/admin/sub/SubCreate";
-// import SubUpdate from "./pages/admin/sub/SubUpdate";
-// import ProductCreate from "./pages/admin/product/ProductCreate";
-// import ProductUpdate from "./pages/admin/product/ProductUpdate";
-// import AllProducts from "./pages/admin/product/AllProducts";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import Home from "./pages/Home";
+import RegisterComplete from "./pages/auth/RegisterComplete";
+import ForgotPassword from "./pages/auth/ForgotPassword";
+import History from "./pages/user/History";
+import Password from "./pages/user/Password";
+import Wishlist from "./pages/user/Wishlist";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import CategoryCreate from "./pages/admin/category/CategoryCreate";
+import CategoryUpdate from "./pages/admin/category/CategoryUpdate";
+import SubCreate from "./pages/admin/sub/SubCreate";
+import SubUpdate from "./pages/admin/sub/SubUpdate";
+import ProductCreate from "./pages/admin/product/ProductCreate";
+import ProductUpdate from "./pages/admin/product/ProductUpdate";
+import AllProducts from "./pages/admin/product/AllProducts";
+import Product from "./pages/Product";
 
 //using lazy
 //components
-const Header = lazy(() => import("./components/nav/Header"));
+// const Header = lazy(() => import("./components/nav/Header"));
 
 // pages
-const Login = lazy(() => import("./pages/auth/Login"));
-const Register = lazy(() => import("./pages/auth/Register"));
-const Home = lazy(() => import("./pages/Home"));
-const RegisterComplete = lazy(() => import("./pages/auth/RegisterComplete"));
-const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword"));
-const History = lazy(() => import("./pages/user/History"));
-const Password = lazy(() => import("./pages/user/Password"));
-const Wishlist = lazy(() => import("./pages/user/Wishlist"));
-const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
-const CategoryCreate = lazy(() =>
-  import("./pages/admin/category/CategoryCreate")
-);
-const CategoryUpdate = lazy(() =>
-  import("./pages/admin/category/CategoryUpdate")
-);
-const SubCreate = lazy(() => import("./pages/admin/sub/SubCreate"));
-const SubUpdate = lazy(() => import("./pages/admin/sub/SubUpdate"));
-const ProductCreate = lazy(() => import("./pages/admin/product/ProductCreate"));
-const ProductUpdate = lazy(() => import("./pages/admin/product/ProductUpdate"));
-const AllProducts = lazy(() => import("./pages/admin/product/AllProducts"));
+// const Login = lazy(() => import("./pages/auth/Login"));
+// const Register = lazy(() => import("./pages/auth/Register"));
+// const Home = lazy(() => import("./pages/Home"));
+// const RegisterComplete = lazy(() => import("./pages/auth/RegisterComplete"));
+// const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword"));
+// const History = lazy(() => import("./pages/user/History"));
+// const Password = lazy(() => import("./pages/user/Password"));
+// const Wishlist = lazy(() => import("./pages/user/Wishlist"));
+// const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
+// const CategoryCreate = lazy(() =>
+//   import("./pages/admin/category/CategoryCreate")
+// );
+// const CategoryUpdate = lazy(() =>
+//   import("./pages/admin/category/CategoryUpdate")
+// );
+// const SubCreate = lazy(() => import("./pages/admin/sub/SubCreate"));
+// const SubUpdate = lazy(() => import("./pages/admin/sub/SubUpdate"));
+// const ProductCreate = lazy(() => import("./pages/admin/product/ProductCreate"));
+// const ProductUpdate = lazy(() => import("./pages/admin/product/ProductUpdate"));
+// const AllProducts = lazy(() => import("./pages/admin/product/AllProducts"));
+// const Product = lazy(() => import("./pages/Product"));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -134,6 +136,7 @@ const App = () => {
           component={ProductUpdate}
         />
         <AdminRoute exact path="/admin/allproducts" component={AllProducts} />
+        <Route exact path="/product/:slug" component={Product} />
         <Route render={() => <h2>Not Found</h2>} />
         {/* Switchで、一つだけ表示することにできる。パスを指定しないものを最後に置くことで、Switchでどれも見つからなかったときにそれを表示する（404ページ） */}
       </Switch>

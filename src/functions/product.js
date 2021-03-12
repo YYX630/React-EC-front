@@ -1,8 +1,19 @@
 import axios from "axios";
 import { removeImage } from "./cloudinary";
 
+//一定数表示
 export const getProductsByCount = async (count) => {
   return await axios.get(`${process.env.REACT_APP_API_URL}/products/${count}`);
+};
+
+//New Arrivals や Best Sellers
+export const getProducts = async (sort, order, limit, page) => {
+  return await axios.post(`${process.env.REACT_APP_API_URL}/products`, {
+    sort,
+    order,
+    limit,
+    page, //省略されてるが、page: pageという意味。文字列：変数
+  }); //第二引数はbody
 };
 
 export const removeProduct = async (slug, images, authtoken) => {
@@ -38,7 +49,7 @@ export const updateProduct = async (slug, product, authtoken) => {
         authtoken: authtoken,
       },
     }
-  ); //第二引数は送信内容のbody。第3引数はheader。
+  );
 };
 
 export const createProduct = async (product, authtoken) => {
@@ -46,5 +57,9 @@ export const createProduct = async (product, authtoken) => {
     headers: {
       authtoken: authtoken,
     },
-  }); //第二引数は送信内容のbody。第3引数はheader。
+  });
+};
+
+export const getProductsCount = async () => {
+  return await axios.get(`${process.env.REACT_APP_API_URL}/countproducts`);
 };
