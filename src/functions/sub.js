@@ -8,6 +8,12 @@ export const getSub = async (slug) => {
   return await axios.get(`${process.env.REACT_APP_API_URL}/sub/${slug}`); //第二引数は送信内容のbody。第3引数はheader。
 };
 
+export const getSubWithProducts = async (slug) => {
+  return await axios.get(
+    `${process.env.REACT_APP_API_URL}/sub-with-products/${slug}`
+  ); //第二引数は送信内容のbody。第3引数はheader。
+};
+
 export const removeSub = async (slug, authtoken) => {
   return await axios.delete(`${process.env.REACT_APP_API_URL}/sub/${slug}`, {
     headers: {

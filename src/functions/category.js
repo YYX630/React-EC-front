@@ -8,6 +8,12 @@ export const getCategory = async (slug) => {
   return await axios.get(`${process.env.REACT_APP_API_URL}/category/${slug}`); //第二引数は送信内容のbody。第3引数はheader。
 };
 
+export const getCategoryWithProducts = async (slug) => {
+  return await axios.get(
+    `${process.env.REACT_APP_API_URL}/category-with-products/${slug}`
+  );
+};
+
 export const removeCategory = async (slug, authtoken) => {
   return await axios.delete(
     `${process.env.REACT_APP_API_URL}/category/${slug}`,

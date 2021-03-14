@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 
-const ProductListItems = ({ product }) => {
+const ProductListItems = memo(({ product }) => {
   const {
     description,
     slug,
@@ -26,7 +26,7 @@ const ProductListItems = ({ product }) => {
         <li className="list-group-item">
           カテゴリー
           <Link
-            to={`/category/${slug}`}
+            to={`/category/${category.slug}`}
             className="label label-default labe-pill pull-xs-right"
           >
             {category.name}
@@ -39,7 +39,7 @@ const ProductListItems = ({ product }) => {
           {subs.map((sub) => (
             <Link
               className="label label-default labe-pill pull-xs-right"
-              to={`/sub/${slug}`}
+              to={`/sub/${sub.slug}`}
               key={sub._id}
             >
               {sub.name}
@@ -80,6 +80,6 @@ const ProductListItems = ({ product }) => {
       </li>
     </ul>
   );
-};
+});
 
 export default ProductListItems;

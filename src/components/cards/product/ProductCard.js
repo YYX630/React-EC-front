@@ -1,13 +1,13 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
-import defaultImage from "../../images/man2.jpg";
+import defaultImage from "../../../images/man2.jpg";
 import { Card } from "antd";
 import { EyeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-import { showAverage } from "../../functions/rating";
+import { showAverage } from "../../../functions/rating";
 
 const { Meta } = Card;
 
-const ProductCard = ({ product }) => {
+const ProductCard = memo(({ product }) => {
   // destruction
   const { title, slug, description, category, subs, images } = product;
 
@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
         cover={
           <img
             src={images && images.length ? images[0].url : defaultImage}
-            style={{ height: "200px", objectFit: "cover" }}
+            style={{ height: "300px", objectFit: "cover" }}
             className="p-1"
           />
         }
@@ -47,6 +47,6 @@ const ProductCard = ({ product }) => {
       </Card>
     </div>
   );
-};
+});
 
 export default ProductCard;

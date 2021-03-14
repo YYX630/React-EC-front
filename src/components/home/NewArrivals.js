@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 // components
-import ProductCard from "../cards/ProductCard";
+import ProductCard from "../cards/product/ProductCard";
 import LoadingCard from "../cards/LoadingCard";
 import { Pagination } from "antd";
 

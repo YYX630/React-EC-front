@@ -71,3 +71,9 @@ export const productStar = async (star, productId, authtoken) => {
     { headers: { authtoken: authtoken } }
   );
 };
+
+export const getRelated = async (productId) => {
+  return await axios.get(
+    `${process.env.REACT_APP_API_URL}/product/related/${productId}`
+  );
+};

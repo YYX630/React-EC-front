@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 // components
 import AdminNav from "../../../components/nav/AdminNav";
-import AdminProductCard from "../../../components/cards/AdminProductCard";
+import AdminProductCard from "../../../components/cards/product/AdminProductCard";
 
 // functions
 import { getProductsByCount, removeProduct } from "../../../functions/product";

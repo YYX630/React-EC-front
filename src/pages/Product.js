@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { getProduct } from "../functions/product";
 import { useSelector } from "react-redux";
 
 // components
-import SingleProduct from "../components/cards/SingleProduct";
+import SingleProduct from "../components/product/SingleProduct";
+import ProductCard from "../components/cards/product/ProductCard";
 
 //functions
-import { productStar } from "../functions/product";
+import { getProduct, productStar, getRelated } from "../functions/product";
 
 const Product = ({ match }) => {
   const [product, setProduct] = useState({});
+  const [related, setRelated] = useState([]);
   const [star, setStar] = useState(0);
   const { slug } = match.params;
 
@@ -45,28 +46,43 @@ const Product = ({ match }) => {
   const loadSingleProduct = () => {
     getProduct(slug).then((res) => {
       setProduct(res.data);
-      // デフォルトの評価数を取得してsetStarする。
+
+      //get & load related products
+      getRelated(res.data._id).then((res2) => setRelated(res2.data));
     });
   };
 
   return (
-    <div className="container-fluid">
-      <div className="row pt-4">
+    <>
+      <div className="container-fluid">
         <SingleProduct
           product={product}
           onStarClick={onStarClick}
           star={star}
         />
-      </div>
 
-      <div className="row">
-        <div className="col text-center pt-5 pb-5">
-          <hr />
-          <h4>関連商品</h4>
-          <hr />
+        <div className="row">
+          <div className="col text-center pt-5 pb-5">
+            <hr />
+            <h4>関連商品</h4>
+            <hr />
+          </div>
         </div>
       </div>
-    </div>
+      <div className="row pb-5">
+        {related.length ? (
+          related.map((product) => {
+            return (
+              <div key="product._id" className="col-md-4">
+                <ProductCard product={product} />
+              </div>
+            );
+          })
+        ) : (
+          <div className="col text-center">関連商品はありません</div>
+        )}
+      </div>
+    </>
   );
 };
 

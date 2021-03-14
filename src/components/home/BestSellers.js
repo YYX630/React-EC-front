@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 // components
-import ProductCard from "../cards/ProductCard";
+import ProductCard from "../cards/product/ProductCard";
 import LoadingCard from "../cards/LoadingCard";
 import { Pagination } from "antd";
 
@@ -13,7 +13,7 @@ const BestSellers = () => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [productsCount, setProductsCount] = useState(0);
-  const [perPage, setPerPage] = useState(6);
+  const [perPage, setPerPage] = useState(3);
 
   useEffect(() => {
     loadAllProducts();
