@@ -40,8 +40,6 @@ const Product = ({ match }) => {
         return element.postedBy.toString() === user._id.toString(); //toSting()使わずに、==で比較でもいいけど。  //return忘れてた製でバグってた
       });
       existingRatingObject && setStar(existingRatingObject.star);
-    } else {
-      setStar(0);
     }
   }); //第二引数付けないので,every timeなにか変化があったとき。;
 
@@ -59,7 +57,6 @@ const Product = ({ match }) => {
 
   const loadSingleProduct = () => {
     getProduct(slug).then((res) => {
-      setStar(0);
       setProduct(res.data);
       //get & load related products
       getRelated(res.data._id).then((res2) => setRelated(res2.data));
@@ -73,6 +70,7 @@ const Product = ({ match }) => {
           product={product}
           onStarClick={onStarClick}
           star={star}
+          setStar={setStar}
         />
 
         <div className="row">

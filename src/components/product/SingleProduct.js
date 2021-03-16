@@ -15,7 +15,7 @@ import { showAverage } from "../../functions/rating";
 // destruction
 const { TabPane } = Tabs;
 
-const SingleProduct = ({ product, onStarClick, star }) => {
+const SingleProduct = ({ product, onStarClick, star, setStar }) => {
   const { _id, title, description, images } = product;
 
   return (
@@ -41,7 +41,13 @@ const SingleProduct = ({ product, onStarClick, star }) => {
           {product && product.ratings && product.ratings.length > 0 ? (
             showAverage(product)
           ) : (
-            <div className="text-center pt-1 pb-3"> 評価はまだありません </div>
+            <>
+              {setStar(0)}
+              <div className="text-center pt-1 pb-3">
+                {" "}
+                評価はまだありません{" "}
+              </div>
+            </>
           )}
           <Card
             actions={[

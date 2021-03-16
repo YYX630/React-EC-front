@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { SearchOutlined } from "@ant-design/icons";
 
-const Search = () => {
+const Search = ({ device }) => {
   //
   const dispatch = useDispatch();
   const { search } = useSelector((state) => ({ ...state }));
@@ -26,16 +26,31 @@ const Search = () => {
   };
 
   return (
-    <form className="form-inline my-2 my-lg-0" onSubmit={handleSubmit}>
-      <input
-        onChange={handleChange}
-        type="search"
-        value={text}
-        className="form-control mr-sm-2"
-        placeholder="検索"
-      />
-      <SearchOutlined onClick={handleSubmit} />
-    </form>
+    <>
+      {device === "pc" ? (
+        <form className="form-inline my-2 my-lg-0" onSubmit={handleSubmit}>
+          <input
+            onChange={handleChange}
+            type="search"
+            value={text}
+            className="form-control mr-sm-2"
+            placeholder="検索"
+          />
+          <SearchOutlined onClick={handleSubmit} />
+        </form>
+      ) : (
+        <form className="form-inline my-2 my-lg-0" onSubmit={handleSubmit}>
+          <input
+            onChange={handleChange}
+            type="search"
+            value={text}
+            className="form-control form-control-sm mr-sm-2"
+            placeholder="検索"
+          />
+          <SearchOutlined onClick={handleSubmit} />
+        </form>
+      )}
+    </>
   );
 };
 
