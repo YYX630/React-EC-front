@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { scroller } from "react-scroll";
 
 // components
 import ProductCard from "../cards/product/ProductCard";
@@ -17,6 +18,7 @@ const BestSellers = () => {
 
   useEffect(() => {
     loadAllProducts();
+    scrollToSection("bestSellers");
   }, [page]);
 
   useEffect(() => {
@@ -37,9 +39,17 @@ const BestSellers = () => {
     }, []);
   };
 
+  // scroll
+  const scrollToSection = (className) => {
+    scroller.scrollTo(className, {
+      duration: 800,
+      delay: 0,
+      smooth: "easeInOutQuart",
+    });
+  };
   return (
     <>
-      <div className="row">
+      <div className="row top">
         <nav className="col-md-4 offset-md-4 text-center p-3">
           <Pagination
             simple

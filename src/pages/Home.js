@@ -14,11 +14,15 @@ const Home = () => {
         <Jumbotron text={["やめられない", "とまらない", "かっぱえびせん"]} />
       </div>
 
-      <h4 className="text-center p-3 mt-5 mb-5 display-3 jumbotron">新着</h4>
+      <h4 className="text-center p-3 mt-5 mb-5 display-3 jumbotron newArrivals">
+        新着
+      </h4>
       <NewArrivals />
       <br />
 
-      <h4 className="text-center p-3 mt-5 mb-5 display-3 jumbotron">売れ筋</h4>
+      <h4 className="text-center p-3 mt-5 mb-5 display-3 jumbotron bestSellers">
+        売れ筋
+      </h4>
       <BestSellers />
       <br />
 

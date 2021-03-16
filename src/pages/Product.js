@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { scroller } from "react-scroll";
 import { useSelector } from "react-redux";
 
 // components
@@ -17,6 +18,33 @@ const Product = ({ match }) => {
   //redux
   const { user } = useSelector((state) => ({ ...state }));
 
+  // scroll
+  const scrollToSection = (className) => {
+    scroller.scrollTo(className, {
+      duration: 800,
+      delay: 0,
+      smooth: "easeInOutQuart",
+    });
+  };
+
+  // userEffectの使われる順番は必ず上から。
+
+  useEffect(() => {
+    loadSingleProduct();
+    scrollToSection("product-top");
+  }, [slug]);
+
+  useEffect(() => {
+    if (product.ratings && user) {
+      let existingRatingObject = product.ratings.find((element) => {
+        return element.postedBy.toString() === user._id.toString(); //toSting()使わずに、==で比較でもいいけど。  //return忘れてた製でバグってた
+      });
+      existingRatingObject && setStar(existingRatingObject.star);
+    } else {
+      setStar(0);
+    }
+  }); //第二引数付けないので,every timeなにか変化があったとき。;
+
   const onStarClick = (newRating, name) => {
     setStar(newRating);
     productStar(newRating, name, user.token)
@@ -29,24 +57,10 @@ const Product = ({ match }) => {
       });
   };
 
-  // userEffectの使われる順番は必ず上から。
-  useEffect(() => {
-    loadSingleProduct();
-  }, [slug]);
-
-  useEffect(() => {
-    if (product.ratings && user) {
-      let existingRatingObject = product.ratings.find((element) => {
-        return element.postedBy.toString() === user._id.toString(); //toSting()使わずに、==で比較でもいいけど。  //return忘れてた製でバグってた
-      });
-      existingRatingObject && setStar(existingRatingObject.star);
-    }
-  }); //第二引数付けないので,every timeなにか変化があったとき。;
-
   const loadSingleProduct = () => {
     getProduct(slug).then((res) => {
+      setStar(0);
       setProduct(res.data);
-
       //get & load related products
       getRelated(res.data._id).then((res2) => setRelated(res2.data));
     });
@@ -54,7 +68,7 @@ const Product = ({ match }) => {
 
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid product-top">
         <SingleProduct
           product={product}
           onStarClick={onStarClick}
