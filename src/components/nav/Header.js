@@ -8,11 +8,15 @@ import {
   UserAddOutlined,
   UnlockOutlined,
   LogoutOutlined,
+  ShoppingOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import firebase from "firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+
+//components
+import Search from "../forms/Search";
 
 const { SubMenu, Item } = Menu; //destruction、分解
 
@@ -40,8 +44,11 @@ const Header = () => {
 
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
-      <Item key="home" icon={<GithubOutlined />}>
+      <Item key="home" icon={<AppstoreOutlined />}>
         <Link to="/">ホーム</Link>
+      </Item>
+      <Item key="shop" icon={<ShoppingOutlined />}>
+        <Link to="/shop">商品</Link>
       </Item>
 
       {!user && (
@@ -88,6 +95,10 @@ const Header = () => {
           </Menu.ItemGroup> */}
         </SubMenu>
       )}
+
+      <span className="float-right p-1">
+        <Search />
+      </span>
     </Menu>
   );
 };

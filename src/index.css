@@ -1,6 +1,9 @@
 /* SingleProduct の写真 */
-.slider img,
+.slide img,
 .card-image {
   height: 450px;
-  object-fit: cover;
+  object-fit: contain;
+
+  /* height: 450px; */
+  /* object-fit: cover; */
 }

@@ -48,24 +48,31 @@ const ProductListItems = memo(({ product }) => {
         </li>
       )}
 
-      <li className="list-group-item">
-        配達
-        <span className="label label-default labe-pill pull-xs-right">
-          {shipping}
-        </span>
-      </li>
-      <li className="list-group-item">
-        色
-        <span className="label label-default labe-pill pull-xs-right">
-          {color}
-        </span>
-      </li>
-      <li className="list-group-item">
-        ブランド
-        <span className="label label-default labe-pill pull-xs-right">
-          {brand}
-        </span>
-      </li>
+      {shipping && (
+        <li className="list-group-item">
+          配達
+          <span className="label label-default labe-pill pull-xs-right">
+            {shipping}
+          </span>
+        </li>
+      )}
+
+      {color && (
+        <li className="list-group-item">
+          カラー
+          <span className="label label-default labe-pill pull-xs-right">
+            {color}
+          </span>
+        </li>
+      )}
+      {brand && (
+        <li className="list-group-item">
+          ブランド
+          <span className="label label-default labe-pill pull-xs-right">
+            {brand}
+          </span>
+        </li>
+      )}
       <li className="list-group-item">
         残り
         <span className="label label-default labe-pill pull-xs-right">

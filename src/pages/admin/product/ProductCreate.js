@@ -20,8 +20,8 @@ const initialState = {
   shipping: "",
   quantity: "",
   images: [],
-  colors: ["黒", "白", "灰色", "青", "赤", "オレンジ", "緑", "黄色"], //これはただの選択肢
-  brands: ["東大", "京大", "シャネル", "Microsoft", "Apple"], //これもただの選択肢
+  // colors: ["黒", "白", "灰色", "青", "赤", "オレンジ", "緑", "黄色"], //これはただの選択肢
+  // brands: ["東大", "京大", "シャネル", "Microsoft", "Apple"], //これもただの選択肢
   color: "",
   brand: "",
   category: "",

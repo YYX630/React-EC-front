@@ -39,6 +39,7 @@ import AllProducts from "./pages/admin/product/AllProducts";
 import Product from "./pages/Product";
 import CategoryHome from "./pages/category/CategoryHome";
 import SubHome from "./pages/sub/SubHome";
+import Shop from "./pages/Shop";
 
 //using lazy
 //components
@@ -68,6 +69,7 @@ import SubHome from "./pages/sub/SubHome";
 // const Product = lazy(() => import("./pages/Product"));
 // const CategoryHome = lazy(() => import("./pages/category/CategoryHome"));
 // const SubHome = lazy(() => import("./pages/sub/SubHome"));
+// const Shop = lazy(() => import("./pages/Shop"));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -143,6 +145,8 @@ const App = () => {
         <Route exact path="/product/:slug" component={Product} />
         <Route exact path="/category/:slug" component={CategoryHome} />
         <Route exact path="/sub/:slug" component={SubHome} />
+
+        <Route exact path="/shop" component={Shop} />
 
         {/* Switchで、一つだけ表示することにできる。パスを指定しないものを最後に置くことで、Switchでどれも見つからなかったときにそれを表示する（404ページ） */}
         <Route render={() => <h2>Not Found</h2>} />

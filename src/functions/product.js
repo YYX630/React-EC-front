@@ -77,3 +77,12 @@ export const getRelated = async (productId) => {
     `${process.env.REACT_APP_API_URL}/product/related/${productId}`
   );
 };
+
+//検索
+export const fetchProductsByFilter = async (args) => {
+  return await axios.post(
+    `${process.env.REACT_APP_API_URL}/search/filters`,
+    args
+  );
+  // postメソッドなのでbodyを渡せる
+};

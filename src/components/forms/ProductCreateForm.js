@@ -100,7 +100,7 @@ const ProductCreateForm = ({
       </div>
       <br />
 
-      <div className="form-group">
+      {/* <div className="form-group">
         <label>配達</label>
         <select
           name="shipping"
@@ -113,7 +113,7 @@ const ProductCreateForm = ({
           <option value="Yes">Yes</option>
         </select>
       </div>
-      <br />
+      <br /> */}
 
       <div className="form-group">
         <label>在庫数量</label>
@@ -128,6 +128,18 @@ const ProductCreateForm = ({
       <br />
 
       <div className="form-group">
+        <label>カラー</label>
+        <input
+          type="text"
+          name="color"
+          className="form-control"
+          value={color}
+          onChange={handleChange}
+        />
+      </div>
+      <br />
+
+      {/* <div className="form-group">
         <label>色</label>
         <select
           name="color"
@@ -145,9 +157,19 @@ const ProductCreateForm = ({
           })}
         </select>
       </div>
-      <br />
+      <br /> */}
 
       <div className="form-group">
+        <label>ブランド</label>
+        <input
+          type="text"
+          name="brand"
+          className="form-control"
+          value={brand}
+          onChange={handleChange}
+        />
+      </div>
+      {/* <div className="form-group">
         <label>ブランド</label>
         <select
           name="brand"
@@ -165,33 +187,34 @@ const ProductCreateForm = ({
             );
           })}
         </select>
-        <br />
-        <div className="form-group">
-          <label>カテゴリー</label>
-          <select
-            name="category"
-            className="form-control"
-            onChange={handleCategoryChange}
-            value={category ? category : "please select"}
-          >
-            <option value="please select">選択</option>
-            {categories.length > 0 &&
-              categories.map((c) => {
-                return (
-                  <option key={c._id} value={c._id}>
-                    {c.name}
-                  </option>
-                );
-              })}
-          </select>
-        </div>
-        <br />
-        <SubOptionsForm
-          values={values}
-          setValues={setValues}
-          subOptions={subOptions}
-        />
+      </div> */}
+      <br />
+      <div className="form-group">
+        <label>カテゴリー</label>
+        <select
+          name="category"
+          className="form-control"
+          onChange={handleCategoryChange}
+          value={category ? category : "please select"}
+        >
+          <option value="please select">選択</option>
+          {categories.length > 0 &&
+            categories.map((c) => {
+              return (
+                <option key={c._id} value={c._id}>
+                  {c.name}
+                </option>
+              );
+            })}
+        </select>
       </div>
+      <br />
+      <SubOptionsForm
+        values={values}
+        setValues={setValues}
+        subOptions={subOptions}
+      />
+
       <br />
       <button className="btn btn-outline-info">{btn}</button>
     </form>

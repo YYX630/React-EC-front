@@ -22,7 +22,7 @@ const ProductCard = memo(({ product }) => {
         cover={
           <img
             src={images && images.length ? images[0].url : defaultImage}
-            style={{ height: "300px", objectFit: "cover" }}
+            style={{ height: "300px", objectFit: "contain" }} //objectFit: cover ->containに変更
             className="p-1"
           />
         }
@@ -30,12 +30,12 @@ const ProductCard = memo(({ product }) => {
           <Link to={`/product/${slug}`}>
             <EyeOutlined className="text-info" />
             <br />
-            View Product
+            詳細を見る
           </Link>,
           <>
             <ShoppingCartOutlined className="text-success" />
             <br />
-            Add to Cart
+            カートに入れる
           </>,
         ]}
       >
